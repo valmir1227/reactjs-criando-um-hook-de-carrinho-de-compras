@@ -5,8 +5,6 @@ import { ProductList } from "./styles";
 import { api } from "../../services/api";
 import { formatPrice } from "../../util/format";
 import { useCart } from "../../hooks/useCart";
-import axios from "axios";
-
 interface Product {
   id: number;
   title: string;
@@ -30,7 +28,7 @@ const Home = (): JSX.Element => {
     const newSumAmount = { ...sumAmount };
     newSumAmount[product.id] = product.amount;
 
-    return sumAmount;
+    return newSumAmount;
   }, {} as CartItemsAmount);
 
   useEffect(() => {
@@ -65,7 +63,7 @@ const Home = (): JSX.Element => {
             >
               <div data-testid="cart-product-quantity">
                 <MdAddShoppingCart size={16} color="#FFF" />
-                {cartItemsAmount[product.id] || 0} 
+                {cartItemsAmount[product.id] || 0}
               </div>
 
               <span>ADICIONAR AO CARRINHO</span>
